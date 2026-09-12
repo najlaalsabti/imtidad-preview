@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>امتداد الريادة | Imtidad Al-Riyada</title>
+<meta name="description" content="امتداد الريادة — كيان استثماري سعودي متعدد القطاعات مقره الرياض.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400..700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #14202B;
+    --ink-soft: #1D2E3D;
+    --paper: #F2F1EC;
+    --stone: #B9AE99;
+    --stone-line: rgba(20,32,43,0.14);
+    --brass: #8C6A2E;
+    --text-dark: #1B1B18;
+    --text-muted: #6B6459;
+    --text-on-ink: #F2F1EC;
+    --text-on-ink-muted: #A9B4BC;
+    --edit-flag: #A6432B;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--text-dark);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- Language / direction switching ---------- */
+  html[data-lang="ar"] body{
+    direction: rtl;
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+  }
+  html[data-lang="en"] body{
+    direction: ltr;
+    font-family: 'Inter', sans-serif;
+  }
+  html[data-lang="ar"] [data-lang-el="en"]{ display: none !important; }
+  html[data-lang="en"] [data-lang-el="ar"]{ display: none !important; }
+
+  html[data-lang="ar"] .display{ font-family: 'Reem Kufi', sans-serif; }
+  html[data-lang="en"] .display{ font-family: 'Newsreader', serif; font-style: italic; font-weight: 500; }
+
+  h1,h2,h3{ margin:0; font-weight: 500; }
+  p{ margin:0; }
+
+  a{ color: inherit; }
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    position: sticky; top:0; z-index: 50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 18px 32px;
+    background: rgba(20,32,43,0.94);
+    backdrop-filter: blur(6px);
+    color: var(--text-on-ink);
+  }
+  .topbar .brand{
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+  }
+  html[data-lang="en"] .topbar .brand{ font-family: 'Newsreader', serif; font-style: italic; }
+
+  .lang-btn{
+    background: transparent;
+    border: 1px solid var(--stone);
+    color: var(--text-on-ink);
+    padding: 7px 16px;
+    font-size: 0.85rem;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 999px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .lang-btn:hover{ background: var(--stone); color: var(--ink); }
+  .lang-btn:focus-visible{ outline: 2px solid var(--text-on-ink); outline-offset: 2px; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position: relative;
+    background: var(--ink);
+    color: var(--text-on-ink);
+    padding: 9rem 8vw 7rem;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    z-index:-1;
+    background-image:
+      repeating-linear-gradient(135deg, rgba(185,174,153,0.10) 0px, rgba(185,174,153,0.10) 1px, transparent 1px, transparent 46px),
+      repeating-linear-gradient(45deg, rgba(185,174,153,0.07) 0px, rgba(185,174,153,0.07) 1px, transparent 1px, transparent 46px);
+  }
+  .hero-inner{ max-width: 980px; }
+  .hero .eyebrow{
+    font-size: 0.95rem;
+    color: var(--text-on-ink-muted);
+    margin-bottom: 1.4rem;
+    max-width: 40ch;
+  }
+  .hero h1{
+    font-size: clamp(2.6rem, 7vw, 5.2rem);
+    line-height: 1.08;
+    color: var(--text-on-ink);
+  }
+  .hero .tagline{
+    margin-top: 2rem;
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    color: var(--text-on-ink-muted);
+    max-width: 46ch;
+    line-height: 1.6;
+  }
+  .hero.reveal h1, .hero.reveal .tagline, .hero.reveal .eyebrow{
+    animation: rise 0.9s cubic-bezier(.2,.7,.3,1) both;
+  }
+  .hero.reveal .tagline{ animation-delay: 0.12s; }
+  @keyframes rise{
+    from{ opacity:0; transform: translateY(16px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero.reveal h1, .hero.reveal .tagline, .hero.reveal .eyebrow{ animation: none; }
+  }
+
+  /* ---------- Sections shared ---------- */
+  section{ padding: 6rem 8vw; }
+  .section-head{ max-width: 62ch; margin-bottom: 3rem; }
+  .section-head h2{
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+  }
+  .section-head p{
+    margin-top: 1rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-size: 1.02rem;
+  }
+
+  /* ---------- About ---------- */
+  .about p{
+    max-width: 68ch;
+    font-size: 1.15rem;
+    line-height: 1.85;
+    color: var(--text-dark);
+  }
+
+  /* ---------- Sectors ---------- */
+  .sectors{ background: #E9E6DC; border-top: 1px solid var(--stone-line); border-bottom: 1px solid var(--stone-line); }
+  .sector-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--stone-line);
+  }
+  .sector{
+    padding: 2.1rem 1.6rem 2.1rem 0;
+    border-bottom: 1px solid var(--stone-line);
+  }
+  html[dir="rtl"] .sector{ padding: 2.1rem 0 2.1rem 1.6rem; }
+  .sector:nth-child(odd){ border-inline-end: 1px solid var(--stone-line); padding-inline-end: 2.4rem; }
+  .sector:nth-child(even){ padding-inline-start: 2.4rem; }
+  .sector h3{
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 1.25rem;
+    color: var(--ink);
+  }
+  html[data-lang="en"] .sector h3{ font-family: 'Newsreader', serif; font-style: italic; font-weight: 500; }
+  .sector p{
+    margin-top: 0.6rem;
+    color: var(--text-muted);
+    font-size: 0.97rem;
+    line-height: 1.65;
+    max-width: 46ch;
+  }
+  @media (max-width: 720px){
+    .sector-grid{ grid-template-columns: 1fr; }
+    .sector, .sector:nth-child(odd), .sector:nth-child(even){
+      border-inline-end: none; padding-inline: 0; padding-inline-start:0; padding-inline-end:0;
+    }
+  }
+
+  /* ---------- Location ---------- */
+  .location{ display:flex; align-items:center; gap: 4rem; flex-wrap: wrap; }
+  .location .mark{ flex: 0 0 auto; }
+  .location .mark svg{ width: 84px; height: 84px; }
+  .location h2{
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--ink);
+  }
+  html[data-lang="en"] .location h2{ font-family: 'Newsreader', serif; font-style: italic; }
+  .location p{ margin-top: 0.6rem; color: var(--text-muted); font-size: 1.05rem; }
+
+  /* ---------- Contact ---------- */
+  .contact{ background: var(--ink); color: var(--text-on-ink); }
+  .contact .section-head h2{ color: var(--text-on-ink); }
+  .contact .section-head p{ color: var(--text-on-ink-muted); }
+  .contact-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(242,241,236,0.16);
+    max-width: 760px;
+  }
+  .contact-item{
+    background: var(--ink);
+    padding: 2rem;
+  }
+  .contact-item .label{
+    font-size: 0.85rem;
+    color: var(--text-on-ink-muted);
+    margin-bottom: 0.6rem;
+  }
+  .contact-item .value{
+    font-size: 1.15rem;
+  }
+  .contact-item .value a{ text-decoration: none; border-bottom: 1px solid var(--stone); }
+  .contact-item .value a:hover{ border-color: var(--text-on-ink); }
+  .needs-edit{ color: #E8B37A; }
+  @media (max-width: 640px){ .contact-grid{ grid-template-columns: 1fr; } }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding: 2.2rem 8vw;
+    background: var(--ink);
+    color: var(--text-on-ink-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(242,241,236,0.14);
+    display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;
+  }
+  footer .legal{ max-width: 60ch; }
+  footer .legal .flag{ color: #E8B37A; }
+
+  :focus-visible{ outline: 2px solid var(--brass); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <span data-lang-el="ar">امتداد الريادة</span>
+    <span data-lang-el="en">Imtidad Al-Riyada</span>
+  </div>
+  <button class="lang-btn" id="langToggle" type="button">English</button>
+</div>
+
+<header class="hero reveal">
+  <div class="hero-inner">
+    <p class="eyebrow">
+      <span data-lang-el="ar">شركة استثمارية سعودية — الرياض</span>
+      <span data-lang-el="en">A Saudi investment company — Riyadh</span>
+    </p>
+    <h1 class="display">
+      <span data-lang-el="ar">امتداد الريادة</span>
+      <span data-lang-el="en">Imtidad Al&#8209;Riyada</span>
+    </h1>
+    <p class="tagline">
+      <span data-lang-el="ar">كيان استثماري متعدد القطاعات، يمتد عبر ستة أنشطة مترابطة من قلب الرياض.</span>
+      <span data-lang-el="en">A multi-sector investment company, spanning six interconnected activities from the heart of Riyadh.</span>
+    </p>
+  </div>
+</header>
+
+<section class="about">
+  <div class="section-head">
+    <h2>
+      <span data-lang-el="ar">نبذة</span>
+      <span data-lang-el="en">About us</span>
+    </h2>
+  </div>
+  <p>
+    <span data-lang-el="ar">امتداد الريادة كيان استثماري سعودي مقرّه الرياض، يمتلك ويدير أنشطة متنوعة تمتد عبر الاستثمار المالي وإدارة الأصول والتطوير العقاري والصناعة والقطاع الطبي وخدمات الصيانة. نعمل على بناء قيمة مستدامة عبر قطاعات مترابطة.</span>
+    <span data-lang-el="en">Imtidad Al-Riyada is a Saudi investment company based in Riyadh, holding and operating ventures across financial investment, asset management, real estate development, manufacturing, healthcare, and vehicle and equipment maintenance. We build sustainable value across interconnected sectors.</span>
+  </p>
+</section>
+
+<section class="sectors">
+  <div class="section-head">
+    <h2>
+      <span data-lang-el="ar">قطاعاتنا</span>
+      <span data-lang-el="en">Our sectors</span>
+    </h2>
+    <p>
+      <span data-lang-el="ar">ستة أنشطة متوازية تشكّل مجالات عملنا الحالية.</span>
+      <span data-lang-el="en">Six parallel activities that make up our current areas of work.</span>
+    </p>
+  </div>
+
+  <div class="sector-grid">
+    <div class="sector">
+      <h3><span data-lang-el="ar">الاستثمار المالي</span><span data-lang-el="en">Financial Investment</span></h3>
+      <p><span data-lang-el="ar">إدارة محافظ ومشاريع استثمارية متنوعة.</span><span data-lang-el="en">Managing diverse portfolios and investment ventures.</span></p>
+    </div>
+    <div class="sector">
+      <h3><span data-lang-el="ar">إدارة الأصول</span><span data-lang-el="en">Asset Management</span></h3>
+      <p><span data-lang-el="ar">تنمية أصولنا والحفاظ على قيمتها على المدى الطويل.</span><span data-lang-el="en">Growing and preserving asset value over the long term.</span></p>
+    </div>
+    <div class="sector">
+      <h3><span data-lang-el="ar">التطوير العقاري</span><span data-lang-el="en">Real Estate Development</span></h3>
+      <p><span data-lang-el="ar">تطوير مشاريع عقارية سكنية وتجارية.</span><span data-lang-el="en">Developing residential and commercial real estate projects.</span></p>
+    </div>
+    <div class="sector">
+      <h3><span data-lang-el="ar">الصناعات التحويلية</span><span data-lang-el="en">Manufacturing</span></h3>
+      <p><span data-lang-el="ar">تشغيل وتطوير أنشطة صناعية وتصنيعية.</span><span data-lang-el="en">Operating and developing industrial and manufacturing activities.</span></p>
+    </div>
+    <div class="sector">
+      <h3><span data-lang-el="ar">القطاع الطبي</span><span data-lang-el="en">Healthcare</span></h3>
+      <p><span data-lang-el="ar">الاستثمار في الخدمات والمرافق الطبية.</span><span data-lang-el="en">Investing in medical services and facilities.</span></p>
+    </div>
+    <div class="sector">
+      <h3><span data-lang-el="ar">صيانة المركبات والمعدات</span><span data-lang-el="en">Vehicle &amp; Equipment Maintenance</span></h3>
+      <p><span data-lang-el="ar">خدمات صيانة متخصصة للمركبات والمعدات الثقيلة.</span><span data-lang-el="en">Specialized maintenance services for vehicles and heavy equipment.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="location">
+  <div class="mark" aria-hidden="true">
+    <svg viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="1" width="82" height="82" stroke="#8C6A2E" stroke-width="1.2"/>
+      <path d="M42 14 L70 42 L42 70 L14 42 Z" stroke="#14202B" stroke-width="1.4"/>
+      <circle cx="42" cy="42" r="6" fill="#14202B"/>
+    </svg>
+  </div>
+  <div>
+    <h2>
+      <span data-lang-el="ar">الرياض</span>
+      <span data-lang-el="en">Riyadh</span>
+    </h2>
+    <p>
+      <span data-lang-el="ar">المملكة العربية السعودية</span>
+      <span data-lang-el="en">Kingdom of Saudi Arabia</span>
+    </p>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="section-head">
+    <h2>
+      <span data-lang-el="ar">تواصل معنا</span>
+      <span data-lang-el="en">Get in touch</span>
+    </h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-item">
+      <div class="label"><span data-lang-el="ar">الجوال</span><span data-lang-el="en">Phone</span></div>
+      <!-- EDIT ME: replace with the real phone number, in both spots below -->
+      <div class="value needs-edit">
+        <a href="tel:+966500000000">+966 5X XXX XXXX</a>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="label"><span data-lang-el="ar">البريد الإلكتروني</span><span data-lang-el="en">Email</span></div>
+      <!-- EDIT ME: replace with the real email address, in both spots below -->
+      <div class="value needs-edit">
+        <a href="mailto:info@example.com">info@example.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <span data-lang-el="ar">© 2026 امتداد الريادة</span>
+    <span data-lang-el="en">© 2026 Imtidad Al-Riyada</span>
+  </div>
+  <div class="legal">
+    <span class="flag" data-lang-el="ar">[عدّل هذا السطر: أضف ترخيص الجهة المنظمة إن وجد، ولا تنشر أي وعود بعوائد مضمونة]</span>
+    <span class="flag" data-lang-el="en">[Edit this line: add your regulator license number if applicable — never publish guaranteed-return claims]</span>
+  </div>
+</footer>
+
+<script>
+  const html = document.documentElement;
+  const btn = document.getElementById('langToggle');
+  btn.addEventListener('click', () => {
+    const next = html.getAttribute('data-lang') === 'ar' ? 'en' : 'ar';
+    html.setAttribute('data-lang', next);
+    html.setAttribute('lang', next);
+    html.setAttribute('dir', next === 'ar' ? 'rtl' : 'ltr');
+    btn.textContent = next === 'ar' ? 'English' : 'عربي';
+  });
+</script>
+
+</body>
+</html>
